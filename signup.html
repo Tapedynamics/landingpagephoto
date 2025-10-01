@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registrati gratuitamente a PhotoFinder - La soluzione innovativa per fotografi ed eventi">
+    <title>Registrati - PhotoFinder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .signup-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        label .required {
+            color: #e74c3c;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #764ba2;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="logo">📸 PhotoFinder</div>
+        <h1>Inizia Gratuitamente</h1>
+        <p class="subtitle">Compila il form per richiedere l'accesso alla piattaforma</p>
+
+        <div id="successMessage" class="success-message">
+            Grazie per la tua richiesta! Ti contatteremo presto all'indirizzo email fornito.
+        </div>
+
+        <form id="signupForm" name="signup" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="signup">
+            <p style="display: none;">
+                <label>Non compilare se sei umano: <input name="bot-field"></label>
+            </p>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nome">Nome <span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="cognome">Cognome <span class="required">*</span></label>
+                    <input type="text" id="cognome" name="cognome" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Telefono <span class="required">*</span></label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="professione">Professione <span class="required">*</span></label>
+                <select id="professione" name="professione" required>
+                    <option value="">Seleziona la tua professione</option>
+                    <option value="fotografo">Fotografo</option>
+                    <option value="organizzatore-eventi">Organizzatore di Eventi</option>
+                    <option value="wedding-planner">Wedding Planner</option>
+                    <option value="studio-fotografico">Studio Fotografico</option>
+                    <option value="agenzia-eventi">Agenzia Eventi</option>
+                    <option value="altro">Altro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="azienda">Nome Azienda/Studio</label>
+                <input type="text" id="azienda" name="azienda">
+            </div>
+
+            <div class="form-group">
+                <label for="eventi-anno">Quanti eventi gestisci all'anno?</label>
+                <select id="eventi-anno" name="eventi-anno">
+                    <option value="">Seleziona un'opzione</option>
+                    <option value="1-10">1-10 eventi</option>
+                    <option value="11-50">11-50 eventi</option>
+                    <option value="51-100">51-100 eventi</option>
+                    <option value="100+">Più di 100 eventi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="messaggio">Come pensi di utilizzare PhotoFinder?</label>
+                <textarea id="messaggio" name="messaggio" placeholder="Raccontaci brevemente delle tue esigenze..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Invia Richiesta</button>
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">← Torna alla Home</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            // Il form verrà gestito da Netlify
+            // Mostra messaggio di successo dopo l'invio
+            setTimeout(() => {
+                successMessage.classList.add('show');
+                form.reset();
+
+                // Scroll verso l'alto per vedere il messaggio
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
